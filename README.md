@@ -19,12 +19,12 @@ For too long I was delaying giving a chance to SwiftUI. This project is not an e
 ## Preamble
 I enjoy crafting games. They give you a clear goal and a path to achieve this goal. But as your production tree grows it becomes difficult to keep track of everything that needs to be crafted, primitives to collect and small tasks to perform. The production tree can be dozens and dozens of intermediate products deep.
 
-Let me show you an example:
-To fix a broken bridge I need: 4 wooden planks and 2 nails. While I'm here I might as well build a mailbox that requires 2 wooden logs and 1 iron bar.
-Processing 1 wooden log gives you 2 wooden planks. From 1 iron bar you get 4 nails.
-So in total I need: 4 wooden logs and 2 iron bars.
-But I already have 2 wooden planks and 1 nail from a previous crafting project.
-Adding them into the equation results in 3 wooden logs and still 2 iron bars.
+Let me show you an example:  
+To fix a broken bridge I need: 4 wooden planks and 2 nails. While I'm here I might as well build a mailbox that requires 2 wooden logs and 1 iron bar.  
+Processing 1 wooden log gives you 2 wooden planks. From 1 iron bar you get 4 nails.  
+So in total I need: 4 wooden logs and 2 iron bars.  
+But I already have 2 wooden planks and 1 nail from a previous crafting project.  
+Adding them into the equation results in 3 wooden logs and still 2 iron bars.  
 
 ## What I would love to see in the app
 1. Add / edit / remove ingredients.<br/>
