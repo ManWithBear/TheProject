@@ -6,10 +6,13 @@ public func sortInTopologicalOrder<Vertex: Hashable, Edges: Sequence>(
     edgesProvider: (Vertex) -> Edges?
 ) -> [Vertex] where Edges.Element == Vertex {
     var topologicalVertices: [Vertex] = []
-    var notVisitedVertices: Set<Vertex> = Set(vertices)
+    var visitedVertices: Set<Vertex> = []
     var stack: [Vertex] = []
 
-    while let entryNode = notVisitedVertices.popFirst() {
+    for entryNode in vertices {
+        guard !visitedVertices.contains(entryNode) else { continue }
+        visitedVertices.insert(entryNode)
+
         stack.append(entryNode)
         while let vertex = stack.last {
             defer {
@@ -21,8 +24,8 @@ public func sortInTopologicalOrder<Vertex: Hashable, Edges: Sequence>(
 
             guard let edges = edgesProvider(vertex) else { continue }
 
-            for neighbor in edges where notVisitedVertices.contains(neighbor) {
-                notVisitedVertices.remove(neighbor)
+            for neighbor in edges where !visitedVertices.contains(neighbor) {
+                visitedVertices.insert(neighbor)
                 stack.append(neighbor)
             }
         }
