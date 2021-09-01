@@ -1,4 +1,4 @@
-class Ingredient: CustomDebugStringConvertible {
+struct Ingredient: CustomDebugStringConvertible {
     typealias ID = Identifier<Ingredient, String>
     let id: ID
     var name: String

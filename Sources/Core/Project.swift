@@ -1,4 +1,4 @@
-class Project: CustomDebugStringConvertible {
+struct Project: CustomDebugStringConvertible {
     var goal: [(Ingredient.ID, amount: Int)]
 
     init(_ goal: [(Ingredient.ID, amount: Int)]) {
