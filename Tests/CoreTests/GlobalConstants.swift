@@ -1,9 +1,9 @@
 @testable import Core
 
-let woodenLog = Ingredient(name: "wooden log")
-let woodenPlank = Ingredient(name: "wooden plank")
-let ironOre = Ingredient(name: "iron ore")
-let ironBar = Ingredient(name: "iron bar")
-let nails = Ingredient(name: "nails")
-let stand = Ingredient(name: "stand")
-let mailbox = Ingredient(name: "mailbox")
+let woodenLog = Ingredient("wooden log")
+let woodenPlank = Ingredient("wooden plank")
+let ironOre = Ingredient("iron ore")
+let ironBar = Ingredient("iron bar")
+let nails = Ingredient("nails")
+let stand = Ingredient("stand")
+let mailbox = Ingredient("mailbox")

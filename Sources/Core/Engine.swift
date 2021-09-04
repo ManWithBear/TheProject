@@ -3,13 +3,13 @@ import GraphAlgorithms
 class Engine: CustomDebugStringConvertible {
     let project: Project
     let library: RecipeLibrary
-    var recipes: [Ingredient.ID: Recipe] = [:]
+    var recipes: [Ingredient: Recipe] = [:]
 
-    private var userInventory: [Ingredient.ID: Int] = [:]
-    var virtualInventory: [Ingredient.ID: Int] = [:]
+    private var userInventory: [Ingredient: Int] = [:]
+    var virtualInventory: [Ingredient: Int] = [:]
 
-    var sortedIngredients: [Ingredient.ID] = []
-    var ingredientsNeeded: [Ingredient.ID: Int] = [:]
+    var sortedIngredients: [Ingredient] = []
+    var ingredientsNeeded: [Ingredient: Int] = [:]
 
     init(project: Project, library: RecipeLibrary) {
         self.project = project
@@ -19,7 +19,7 @@ class Engine: CustomDebugStringConvertible {
     func preheat() {
         recipes = [:]
 
-        var set: Set<Ingredient.ID> = Set(project.goal.map(\.0))
+        var set: Set<Ingredient> = Set(project.goal.map(\.0))
         while let ingredient = set.popFirst() {
             guard recipes[ingredient] == nil else { continue }
             guard let recipe = library.recipes[ingredient] else { continue }
@@ -49,7 +49,7 @@ class Engine: CustomDebugStringConvertible {
         }
     }
 
-    func add(_ count: Int, _ product: Ingredient.ID) {
+    func add(_ count: Int, _ product: Ingredient) {
         userInventory[product, default: 0] += count
 
         guard recipes[product] != nil else {

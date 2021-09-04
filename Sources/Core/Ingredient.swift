@@ -1,14 +1,14 @@
-struct Ingredient: CustomDebugStringConvertible {
-    typealias ID = Identifier<Ingredient, String>
-    let id: ID
-    var name: String
+struct Ingredient: Equatable, Hashable {
+    typealias RawValue = String
+    let rawValue: RawValue
 
-    init(name: String) {
-        self.id = ID(rawValue: name)
-        self.name = name
+    init(_ rawValue: RawValue) {
+        self.rawValue = rawValue
     }
+}
 
+extension Ingredient: CustomDebugStringConvertible {
     var debugDescription: String {
-        name
+        String(describing: rawValue)
     }
 }

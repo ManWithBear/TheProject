@@ -1,10 +1,10 @@
 struct Recipe: CustomDebugStringConvertible {
-    var product: Ingredient.ID
+    var product: Ingredient
     var amount: Int
 
-    var ingredients: [Ingredient.ID: Int]
+    var ingredients: [Ingredient: Int]
 
-    init(_ amount: Int, _ what: Ingredient.ID, ingredients: [Ingredient.ID: Int]) {
+    init(_ amount: Int, _ what: Ingredient, ingredients: [Ingredient: Int]) {
         self.product = what
         self.amount = amount
         self.ingredients = ingredients
@@ -13,7 +13,7 @@ struct Recipe: CustomDebugStringConvertible {
     var debugDescription: String {
         let header = "Produce \(amount) \(product) from:"
         let tail = ingredients
-            .sorted { $0.key < $1.key }
+            .sorted { $0.key.rawValue < $1.key.rawValue }
             .map { "- \($0.value) \($0.key)" }
             .joined(separator: "\n")
         return header + "\n" + tail

@@ -1,6 +1,6 @@
 class RecipeLibrary {
     static let shared = RecipeLibrary()
-    var recipes: [Ingredient.ID: Recipe] = [:]
+    var recipes: [Ingredient: Recipe] = [:]
 
     init(_ recipes: [Recipe]) {
         self.recipes = Dictionary(

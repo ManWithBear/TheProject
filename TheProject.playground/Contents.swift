@@ -26,7 +26,7 @@ class Ingredient: CustomDebugStringConvertible {
     var name: String
 
     init(name: String) {
-        self.id = ID(rawValue: name)
+        self = ID(rawValue: name)
         self.name = name
     }
 
@@ -36,12 +36,12 @@ class Ingredient: CustomDebugStringConvertible {
 }
 
 struct Recipe: CustomDebugStringConvertible {
-    var product: Ingredient.ID
+    var product: Ingredient
     var amount: Int
 
-    var ingredients: [Ingredient.ID: Int]
+    var ingredients: [Ingredient: Int]
 
-    init(_ amount: Int, _ what: Ingredient.ID, ingredients: [Ingredient.ID: Int]) {
+    init(_ amount: Int, _ what: Ingredient, ingredients: [Ingredient: Int]) {
         self.product = what
         self.amount = amount
         self.ingredients = ingredients
@@ -64,41 +64,41 @@ extension Ingredient {
     static let nails = Ingredient(name: "nails")
 }
 
-extension Ingredient.ID {
-    static var woodenLog: Self { Ingredient.woodenLog.id }
-    static var woodenPlank: Self { Ingredient.woodenPlank.id }
-    static var ironOre: Self { Ingredient.ironOre.id }
-    static var ironBar: Self { Ingredient.ironBar.id }
-    static var nails: Self { Ingredient.nails.id }
+extension Ingredient {
+    static var woodenLog: Self { Ingredient.woodenLog }
+    static var woodenPlank: Self { Ingredient.woodenPlank }
+    static var ironOre: Self { Ingredient.ironOre }
+    static var ironBar: Self { Ingredient.ironBar }
+    static var nails: Self { Ingredient.nails }
 }
 
 let plankRecipe = Recipe(2, .woodenPlank, ingredients: [.woodenLog: 1])
 
 class RecipeLibrary {
     static let shared = RecipeLibrary()
-    var recipes: [Ingredient.ID: Recipe] = [:]
+    var recipes: [Ingredient: Recipe] = [:]
 }
 
 class Project {
-    var goal: [(Ingredient.ID, amount: Int)]
+    var goal: [(Ingredient, amount: Int)]
 
-    init(_ goal: [(Ingredient.ID, amount: Int)]) {
+    init(_ goal: [(Ingredient, amount: Int)]) {
         self.goal = goal
     }
 }
 
 class Engine {
     let project: Project
-    let recipes: [Ingredient.ID: Recipe]
-    var inventory: [Ingredient.ID: Int]
+    let recipes: [Ingredient: Recipe]
+    var inventory: [Ingredient: Int]
     
     init(_ project: Project) {
         self.project = project
         self.inventory = [:]
         
-        var recipes: [Ingredient.ID: Recipe] = [:]
+        var recipes: [Ingredient: Recipe] = [:]
         
-        var set: Set<Ingredient.ID> = Set(project.goal.map(\.0))
+        var set: Set<Ingredient> = Set(project.goal.map(\.0))
         while let ingredient = set.popFirst() {
             guard recipes[ingredient] == nil else { continue }
             guard let recipe = RecipeLibrary.shared.recipes[ingredient] else { continue }

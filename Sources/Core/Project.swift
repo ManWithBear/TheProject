@@ -1,7 +1,7 @@
 struct Project: CustomDebugStringConvertible {
-    var goal: [(Ingredient.ID, amount: Int)]
+    var goal: [(Ingredient, amount: Int)]
 
-    init(_ goal: [(Ingredient.ID, amount: Int)]) {
+    init(_ goal: [(Ingredient, amount: Int)]) {
         self.goal = goal
     }
 
