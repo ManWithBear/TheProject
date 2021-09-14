@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TheProject",
+        "repositoryURL": "/Users/denisbogomolov/Documents/xcode/my_projects/TheProject",
+        "state": {
+          "branch": "main",
+          "revision": "7b72f8f02498d93462f44698a9527a9dffa013e0",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
