@@ -1,13 +1,15 @@
-struct IngredientMetadata: CustomDebugStringConvertible {
-    let ingredient: Ingredient
-    var name: String
+public struct IngredientMetadata {
+    public let ingredient: Ingredient
+    public var name: String
 
-    init(ingredient: Ingredient, name: String) {
+    public init(ingredient: Ingredient, name: String) {
         self.ingredient = ingredient
         self.name = name
     }
+}
 
-    var debugDescription: String {
+extension IngredientMetadata: CustomDebugStringConvertible {
+    public var debugDescription: String {
         name
     }
 }

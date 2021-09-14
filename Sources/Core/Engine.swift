@@ -1,8 +1,10 @@
 import GraphAlgorithms
 
-class Engine: CustomDebugStringConvertible {
-    let project: Project
-    let library: RecipeLibrary
+public class Engine {
+    public let project: Project
+    public let library: RecipeLibrary
+    public var inventory: [Ingredient: Int] { virtualInventory }
+
     var recipes: [Ingredient: Recipe] = [:]
 
     private var userInventory: [Ingredient: Int] = [:]
@@ -11,12 +13,12 @@ class Engine: CustomDebugStringConvertible {
     var sortedIngredients: [Ingredient] = []
     var ingredientsNeeded: [Ingredient: Int] = [:]
 
-    init(project: Project, library: RecipeLibrary) {
+    public init(project: Project, library: RecipeLibrary) {
         self.project = project
         self.library = library
     }
 
-    func preheat() {
+    public func preheat() {
         recipes = [:]
 
         var set: Set<Ingredient> = Set(project.goal.map(\.0))
@@ -49,7 +51,7 @@ class Engine: CustomDebugStringConvertible {
         }
     }
 
-    func add(_ count: Int, _ product: Ingredient) {
+    public func add(_ count: Int, _ product: Ingredient) {
         userInventory[product, default: 0] += count
 
         guard recipes[product] != nil else {
@@ -73,8 +75,10 @@ class Engine: CustomDebugStringConvertible {
 
         self.virtualInventory = virtualInventory
     }
+}
 
-    var debugDescription: String {
+extension Engine: CustomDebugStringConvertible {
+    public var debugDescription: String {
         project.debugDescription
             + "\nCurrent state:\n"
             + sortedIngredients

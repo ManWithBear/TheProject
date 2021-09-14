@@ -1,22 +1,13 @@
-struct Recipe: CustomDebugStringConvertible {
-    var product: Ingredient
-    var amount: Int
+public struct Recipe {
+    public var product: Ingredient
+    public var amount: Int
 
-    var ingredients: [Ingredient: Int]
+    public var ingredients: [Ingredient: Int]
 
-    init(_ amount: Int, _ what: Ingredient, ingredients: [Ingredient: Int]) {
+    public init(_ amount: Int, _ what: Ingredient, ingredients: [Ingredient: Int]) {
         self.product = what
         self.amount = amount
         self.ingredients = ingredients
-    }
-
-    var debugDescription: String {
-        let header = "Produce \(amount) \(product) from:"
-        let tail = ingredients
-            .sorted { $0.key.rawValue < $1.key.rawValue }
-            .map { "- \($0.value) \($0.key)" }
-            .joined(separator: "\n")
-        return header + "\n" + tail
     }
 
     /// Calculate how many recipes you need to perform to get `productNeeded` products.
@@ -37,5 +28,16 @@ struct Recipe: CustomDebugStringConvertible {
         let dAmount = Double(amount)
         let result = dProductNeeded / dAmount
         return Int(result.rounded(.towardZero))
+    }
+}
+
+extension Recipe {
+    public var debugDescription: String {
+        let header = "Produce \(amount) \(product) from:"
+        let tail = ingredients
+            .sorted { $0.key.rawValue < $1.key.rawValue }
+            .map { "- \($0.value) \($0.key)" }
+            .joined(separator: "\n")
+        return header + "\n" + tail
     }
 }

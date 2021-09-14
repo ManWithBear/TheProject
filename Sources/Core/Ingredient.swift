@@ -1,14 +1,14 @@
-struct Ingredient: Equatable, Hashable {
-    typealias RawValue = String
-    let rawValue: RawValue
+public struct Ingredient: Equatable, Hashable {
+    public typealias RawValue = String
+    public let rawValue: RawValue
 
-    init(_ rawValue: RawValue) {
+    public init(_ rawValue: RawValue) {
         self.rawValue = rawValue
     }
 }
 
 extension Ingredient: CustomDebugStringConvertible {
-    var debugDescription: String {
+    public var debugDescription: String {
         String(describing: rawValue)
     }
 }
