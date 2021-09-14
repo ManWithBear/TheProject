@@ -1,6 +1,8 @@
 import UIKit
 
 public class App {
+    public init() { }
+
     public func createUIStack() -> UIViewController {
         let tab = UITabBarController()
         tab.viewControllers = [
